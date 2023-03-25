@@ -4,7 +4,7 @@
 
 void PrintData(string line)
 {
-    Console.WriteLine(line);
+    Console.Write(line);
 }
 string ReadData(string line)
 {
@@ -36,4 +36,26 @@ for(int i = 0; i < allThatYouWant.Length; i++)
     allThatYouWant[i] = ReadData("Введите значение: ");
 }
 // Выводим получившийся массив
+PrintData("Вы ввели массив: ");
 Print1DArray(allThatYouWant);
+// Напишем метод выборки аргументов массива, которые соответвуют условию. Формат string, тк возвращается тоже массив
+string[] LookingForThreeChars(string[] arr)
+{
+    // Создаем список, в котором будем хранить значения, соотв. условию
+    List<string> newResult = new List<string>();
+    // Идем по старому массиву
+    for(int i = 0; i < arr.Length; i++)
+    {
+            // Узнаем количество знаков с помощью свойства Length;
+            int size = arr[i].Length;
+            // Проверяем на условие
+            if(size <= 3) newResult.Add(arr[i]);
+    }
+    // Преобразуем список в массив
+    string[] result = newResult.ToArray();
+    return result;
+}
+
+string[] arrWithThreeChars = LookingForThreeChars(allThatYouWant);
+PrintData("Результат программы: ");
+Print1DArray(arrWithThreeChars);
